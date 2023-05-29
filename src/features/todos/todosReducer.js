@@ -14,7 +14,7 @@ export default (state, action) => {
       return copy;
 
     case "todos/todoToggled":
-      const result = copy.map((todo) => {
+      const toggledResult = copy.map((todo) => {
         if (todo.id === action.payload)
           return {
             ...todo,
@@ -22,7 +22,18 @@ export default (state, action) => {
           };
         return todo;
       });
-      return result;
+      return toggledResult;
+
+    case "todos/todoColoured":
+      const colouredResult = copy.map((todo) => {
+        if (todo.id === action.payload.id)
+          return {
+            ...todo,
+            colour: action.payload.colour,
+          };
+        return todo;
+      });
+      return colouredResult;
 
     default:
       return state;

@@ -46,4 +46,20 @@ describe("Todos", () => {
     ];
     expect(todosReducer(state, action)).toEqual(expected);
   });
+
+  test("todos/todoColoured", () => {
+    const state = [
+      { id: 0, text: "Todo 1" },
+      { id: 1, text: "Todo 2" },
+    ];
+    const action = {
+      type: "todos/todoColoured",
+      payload: { id: 0, colour: "red" },
+    };
+    const expected = [
+      { id: 0, text: "Todo 1", colour: "red" },
+      { id: 1, text: "Todo 2" },
+    ];
+    expect(todosReducer(state, action)).toEqual(expected);
+  });
 });
