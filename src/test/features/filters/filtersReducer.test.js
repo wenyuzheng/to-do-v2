@@ -28,4 +28,11 @@ describe("Filters reducer", () => {
     const expected = { colours: [] };
     expect(filtersReducer(state, action)).toEqual(expected);
   });
+
+  test("filters/reset", () => {
+    const state = { showing: "Incomplete", colours: ["yellow", "red"] };
+    const action = { type: "filters/reset" };
+    const expected = { showing: "All", colours: [] };
+    expect(filtersReducer(state, action)).toEqual(expected);
+  });
 });

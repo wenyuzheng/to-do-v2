@@ -26,6 +26,9 @@ export default (state, action) => {
       copy.colours = [];
       return copy;
 
+    case "filters/reset":
+      return initialState;
+
     default:
       return state;
   }
