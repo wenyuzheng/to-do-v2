@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { legacy_createStore } from "redux";
 import reducer from "./reducer";
 import { logStateEnhancer } from "./enhancers";
 import {
@@ -20,6 +20,6 @@ const enhancer = myApplyMiddlewareWithStore([
   say100Middleware,
 ]);
 
-const store = createStore(reducer, enhancer);
+const store = legacy_createStore(reducer, enhancer);
 
 export default store;
