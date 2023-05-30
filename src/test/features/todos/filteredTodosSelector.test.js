@@ -95,6 +95,60 @@ describe("filteredTodoSelector", () => {
   });
 
   describe("filter colour and showing", () => {
+    test("filter all", () => {
+      const todos = [
+        { id: 0, text: "todo1", complete: true },
+        { id: 1, text: "todo2", complete: true, colour: "yellow" },
+        { id: 2, text: "todo3", complete: false, colour: "red" },
+      ];
+      const filters = {
+        showing: "All",
+        colours: [],
+      };
+      const expected = [
+        { id: 0, text: "todo1", complete: true },
+        { id: 1, text: "todo2", complete: true, colour: "yellow" },
+        { id: 2, text: "todo3", complete: false, colour: "red" },
+      ];
+      const result = filteredTodosSelector(todos, filters);
+      expect(result).toEqual(expected);
+    });
+
+    test("filter completed", () => {
+      const todos = [
+        { id: 0, text: "todo1", complete: true },
+        { id: 1, text: "todo2", complete: true, colour: "yellow" },
+        { id: 2, text: "todo3", complete: false, colour: "red" },
+      ];
+      const filters = {
+        showing: "Completed",
+        colours: [],
+      };
+      const expected = [
+        { id: 0, text: "todo1", complete: true },
+        { id: 1, text: "todo2", complete: true, colour: "yellow" },
+      ];
+      const result = filteredTodosSelector(todos, filters);
+      expect(result).toEqual(expected);
+    });
+
+    test("filter incomplete", () => {
+      const todos = [
+        { id: 0, text: "todo1", complete: true },
+        { id: 1, text: "todo2", complete: true, colour: "yellow" },
+        { id: 2, text: "todo3", complete: false, colour: "red" },
+      ];
+      const filters = {
+        showing: "Incomplete",
+        colours: [],
+      };
+      const expected = [
+        { id: 2, text: "todo3", complete: false, colour: "red" },
+      ];
+      const result = filteredTodosSelector(todos, filters);
+      expect(result).toEqual(expected);
+    });
+
     test("filter one colour and completed", () => {
       const todos = [
         { id: 0, text: "todo1", complete: true },

@@ -16,8 +16,8 @@ import {
 // const enhancer = logStateEnhancer;
 // const enhancer = myApplyMiddleware([sayHiMiddleware, sayByeMiddleware]);
 const enhancer = myApplyMiddlewareWithStore([
-  logStateMiddleware,
-  say100Middleware,
+  //   logStateMiddleware,
+  //   say100Middleware,
 ]);
 
 const store = legacy_createStore(reducer, enhancer);

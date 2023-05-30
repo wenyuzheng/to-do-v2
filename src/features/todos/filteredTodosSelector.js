@@ -9,6 +9,7 @@ export const filterTodosShowing = (todos, showing) => {
 };
 
 export const filterTodosColour = (todos, colours) => {
+  if (colours.length === 0) return todos;
   return todos.filter((todo) => colours.includes(todo.colour));
 };
 

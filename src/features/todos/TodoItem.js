@@ -21,13 +21,15 @@ const ColourDropdown = ({ id }) => {
   );
 };
 
-const TickBox = ({ id }) => {
+const TickBox = ({ todo }) => {
   const dispatch = useDispatch();
   const onChangeHandler = () => {
-    dispatch({ type: "todos/todoToggled", payload: id });
+    dispatch({ type: "todos/todoToggled", payload: todo.id });
   };
 
-  return <input type="checkbox" onChange={onChangeHandler} />;
+  return (
+    <input type="checkbox" onChange={onChangeHandler} checked={todo.complete} />
+  );
 };
 
 const DeleteButton = ({ id }) => {
@@ -47,7 +49,7 @@ const TodoItem = ({ todo }) => {
         alignItems: "center",
       }}
     >
-      <TickBox id={todo.id} />
+      <TickBox todo={todo} />
       <div style={{ color: todo.colour }}>{todo.text}</div>
       <ColourDropdown id={todo.id} />
       <DeleteButton id={todo.id} />

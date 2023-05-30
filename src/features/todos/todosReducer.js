@@ -8,7 +8,11 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case "todos/todoAdded":
-      copy.push({ id: nextTodoId(state), text: action.payload });
+      copy.push({
+        id: nextTodoId(state),
+        text: action.payload,
+        complete: false,
+      });
       return copy;
 
     case "todos/todoDeleted":
@@ -20,7 +24,7 @@ export default (state = initialState, action) => {
         if (todo.id === action.payload)
           return {
             ...todo,
-            completed: !todo.completed,
+            complete: !todo.complete,
           };
         return todo;
       });
