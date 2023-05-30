@@ -1,19 +1,19 @@
 import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 import filteredTodosSelector from "./filteredTodosSelector";
+import _ from "lodash";
 
 const TodoList = () => {
-  const todos = useSelector((state) => state.todos);
   const filters = useSelector((state) => state.filters);
-
-  const filtered = filteredTodosSelector(todos, filters);
-
-  console.log("list is rendering");
+  const todoIds = useSelector(
+    (state) => filteredTodosSelector(state.todos, filters).map((e) => e.id),
+    (a, b) => _.isEqual(a, b)
+  );
 
   return (
     <div>
-      {filtered.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
+      {todoIds.map((id) => (
+        <TodoItem key={id} todoId={id} />
       ))}
     </div>
   );

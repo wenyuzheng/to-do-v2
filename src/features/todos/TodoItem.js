@@ -1,4 +1,5 @@
-import { useDispatch } from "react-redux";
+import _ from "lodash";
+import { useDispatch, useSelector } from "react-redux";
 
 const ColourDropdown = ({ id }) => {
   const colours = ["", "red", "green", "blue", "orange"];
@@ -40,8 +41,12 @@ const DeleteButton = ({ id }) => {
   return <button onClick={deleteHandler}>X</button>;
 };
 
-const TodoItem = ({ todo }) => {
-  console.log(todo.text, " is rendering");
+const TodoItem = ({ todoId }) => {
+  const todo = useSelector(
+    (state) => state.todos.find((e) => e.id === todoId),
+    (a, b) => _.isEqual(a, b)
+  );
+
   return (
     <div
       style={{

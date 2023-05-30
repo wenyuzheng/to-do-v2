@@ -2,9 +2,9 @@ import _ from "lodash";
 import nextTodoId from "../../functions/nextTodoId";
 
 const initialState = [
-  { id: 0, text: "abc" },
-  { id: 1, text: "dgashd" },
-  { id: 2, text: "szsss" },
+  { id: 0, text: "abc", complete: true },
+  { id: 1, text: "dgashd", complete: false },
+  { id: 2, text: "szsss", complete: false },
 ];
 
 export default (state = initialState, action) => {
