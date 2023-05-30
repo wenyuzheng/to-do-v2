@@ -5,7 +5,7 @@ const initialState = {
   colours: [],
 };
 
-export default (state, action) => {
+export default (state = initialState, action) => {
   const copy = _.cloneDeep(state);
 
   switch (action.type) {

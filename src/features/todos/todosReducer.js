@@ -1,7 +1,9 @@
 import _ from "lodash";
 import nextTodoId from "../../functions/nextTodoId";
 
-export default (state, action) => {
+const initialState = [];
+
+export default (state = initialState, action) => {
   const copy = _.cloneDeep(state);
 
   switch (action.type) {
