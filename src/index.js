@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./store";
 import { Provider } from "react-redux";
 
-store.dispatch({ type: "todos/todoAdded", payload: "Learn todo" });
+// store.dispatch({ type: "todos/todoAdded", payload: "Learn todo" });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
