@@ -8,7 +8,7 @@ const TodoList = () => {
 
   const filtered = filteredTodosSelector(todos, filters);
 
-  console.log({ todos, filtered, filters });
+  console.log("list is rendering");
 
   return (
     <div>

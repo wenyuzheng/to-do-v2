@@ -41,6 +41,7 @@ const DeleteButton = ({ id }) => {
 };
 
 const TodoItem = ({ todo }) => {
+  console.log(todo.text, " is rendering");
   return (
     <div
       style={{

@@ -1,7 +1,11 @@
 import _ from "lodash";
 import nextTodoId from "../../functions/nextTodoId";
 
-const initialState = [];
+const initialState = [
+  { id: 0, text: "abc" },
+  { id: 1, text: "dgashd" },
+  { id: 2, text: "szsss" },
+];
 
 export default (state = initialState, action) => {
   const copy = _.cloneDeep(state);
