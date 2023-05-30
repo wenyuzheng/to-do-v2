@@ -30,12 +30,27 @@ const TickBox = ({ id }) => {
   return <input type="checkbox" onChange={onChangeHandler} />;
 };
 
+const DeleteButton = ({ id }) => {
+  const dispatch = useDispatch();
+  const deleteHandler = () => {
+    dispatch({ type: "todos/todoDeleted", payload: id });
+  };
+  return <button onClick={deleteHandler}>X</button>;
+};
+
 const TodoItem = ({ todo }) => {
   return (
-    <div style={{ display: "inline-flex" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
+      }}
+    >
       <TickBox id={todo.id} />
       <div style={{ color: todo.colour }}>{todo.text}</div>
       <ColourDropdown id={todo.id} />
+      <DeleteButton id={todo.id} />
     </div>
   );
 };

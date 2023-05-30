@@ -12,8 +12,8 @@ export default (state = initialState, action) => {
       return copy;
 
     case "todos/todoDeleted":
-      copy.splice(action.payload, 1);
-      return copy;
+      const filtered = copy.filter((e) => e.id !== action.payload);
+      return filtered;
 
     case "todos/todoToggled":
       const toggledResult = copy.map((todo) => {
