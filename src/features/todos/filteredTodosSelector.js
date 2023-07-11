@@ -1,3 +1,5 @@
+import { createSelector } from "reselect";
+
 export const filterTodosShowing = (todos, showing) => {
   if (showing === "Completed") {
     return todos.filter((todo) => todo.complete);
@@ -13,8 +15,17 @@ export const filterTodosColour = (todos, colours) => {
   return todos.filter((todo) => colours.includes(todo.colour));
 };
 
-export default (todos, filters) => {
-  const filteredColour = filterTodosColour(todos, filters.colours);
-  const filtered = filterTodosShowing(filteredColour, filters.showing);
-  return filtered;
-};
+export const selectFilteredTodos = createSelector(
+  (state) => state.todos,
+  (state) => state.filters,
+  (todos, filters) => {
+    const filteredColour = filterTodosColour(todos, filters.colours);
+    const filtered = filterTodosShowing(filteredColour, filters.showing);
+    return filtered;
+  }
+);
+
+export const selectFilteredTodoIds = createSelector(
+  selectFilteredTodos,
+  (filteredTodos) => filteredTodos.map((e) => e.id)
+);
