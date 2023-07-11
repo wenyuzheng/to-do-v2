@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { todosAdded } from "./todosReducer";
 
 const AddTodo = () => {
   const [userInput, setUserInput] = useState("");
@@ -9,7 +10,7 @@ const AddTodo = () => {
     setUserInput(e.target.value);
   };
   const addTodoHandler = () => {
-    dispatch({ type: "todos/todoAdded", payload: userInput });
+    dispatch(todosAdded(userInput));
     setUserInput("");
   };
 

@@ -49,3 +49,31 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export const todosAdded = (todo) => {
+  return {
+    type: "todos/todoAdded",
+    payload: todo,
+  };
+};
+
+export const todosDeleted = (todoId) => {
+  return {
+    type: "todos/todoDeleted",
+    payload: todoId,
+  };
+};
+
+export const todoToggled = (todoId) => {
+  return {
+    type: "todos/todoToggled",
+    payload: todoId,
+  };
+};
+
+export const todoColoured = (todoId, colour) => {
+  return {
+    type: "todos/todoColoured",
+    payload: { id: todoId, colour: colour },
+  };
+};

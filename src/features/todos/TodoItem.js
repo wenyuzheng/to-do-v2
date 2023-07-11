@@ -1,14 +1,12 @@
 import _ from "lodash";
 import { useDispatch, useSelector } from "react-redux";
+import { todoColoured, todoToggled, todosDeleted } from "./todosReducer";
 
 const ColourDropdown = ({ id }) => {
   const colours = ["", "red", "green", "blue", "orange"];
   const dispatch = useDispatch();
   const onChangeHandler = (e) => {
-    dispatch({
-      type: "todos/todoColoured",
-      payload: { id: id, colour: e.target.value },
-    });
+    dispatch(todoColoured(id, e.target.value));
   };
 
   return (
@@ -25,7 +23,7 @@ const ColourDropdown = ({ id }) => {
 const TickBox = ({ todo }) => {
   const dispatch = useDispatch();
   const onChangeHandler = () => {
-    dispatch({ type: "todos/todoToggled", payload: todo.id });
+    dispatch(todoToggled(todo.id));
   };
 
   return (
@@ -36,7 +34,7 @@ const TickBox = ({ todo }) => {
 const DeleteButton = ({ id }) => {
   const dispatch = useDispatch();
   const deleteHandler = () => {
-    dispatch({ type: "todos/todoDeleted", payload: id });
+    dispatch(todosDeleted(id));
   };
   return <button onClick={deleteHandler}>X</button>;
 };
