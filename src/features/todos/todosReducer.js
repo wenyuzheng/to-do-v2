@@ -1,5 +1,6 @@
 import _ from "lodash";
 import nextTodoId from "../../functions/nextTodoId";
+import { createSelector } from "reselect";
 
 const initialState = [
   { id: 0, text: "abc", complete: true },
@@ -77,3 +78,8 @@ export const todoColoured = (todoId, colour) => {
     payload: { id: todoId, colour: colour },
   };
 };
+
+export const selectTodoIds = createSelector(
+  (state) => state.todos,
+  (todos) => todos.map((todo) => todo.id)
+);
