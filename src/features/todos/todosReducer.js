@@ -83,3 +83,22 @@ export const selectTodoIds = createSelector(
   (state) => state.todos,
   (todos) => todos.map((todo) => todo.id)
 );
+
+export const selectFilteredTodos = createSelector(
+  (state) => state.todos,
+  (state) => state.filters.showing,
+  (todos, showing) => {
+    if (showing === "Completed") {
+      return todos.filter((todo) => todo.complete);
+    }
+    if (showing === "Incomplete") {
+      return todos.filter((todo) => !todo.complete);
+    }
+    return todos;
+  }
+);
+
+export const selectFilteredTodoIds = createSelector(
+  selectFilteredTodos,
+  (filteredTodos) => filteredTodos.map((e) => e.id)
+);
