@@ -12,6 +12,9 @@ import {
   myApplyMiddlewareWithStore,
   myApplySingleMiddleware,
 } from "./functions/middleware";
+import { configureStore } from "@reduxjs/toolkit";
+import todosReducer from "./features/todos/todosReducer";
+import filtersReducer from "./features/filters/filtersReducer";
 
 // const enhancer = logStateEnhancer;
 // const enhancer = myApplyMiddleware([sayHiMiddleware, sayByeMiddleware]);
@@ -20,6 +23,13 @@ const enhancer = myApplyMiddlewareWithStore([
   //   say100Middleware,
 ]);
 
-const store = legacy_createStore(reducer, enhancer);
+// const store = legacy_createStore(reducer, enhancer);
+
+const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+    filters: filtersReducer,
+  },
+});
 
 export default store;
